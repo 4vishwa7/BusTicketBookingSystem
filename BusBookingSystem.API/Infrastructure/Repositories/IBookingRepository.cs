@@ -11,5 +11,6 @@ public interface IBookingRepository
     Task<bool> IsSeatAvailable(int busId, int seatNumber);
 
     Task UpdateAsync(Booking booking);
+    Task<List<Booking>> GetAllAsync();
     
 }
