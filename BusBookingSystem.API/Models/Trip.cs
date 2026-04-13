@@ -10,7 +10,7 @@ namespace BusBookingSystem.API.Models
         public decimal BasePrice { get; set; }
         public int AvailableSeats { get; set; }
         public Bus Bus { get; set; }
-        public Route Route { get; set; }
+        public BusRoute Route { get; set; }
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

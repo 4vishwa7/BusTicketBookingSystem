@@ -1,10 +1,16 @@
-﻿namespace BusBookingSystem.API.DTOs
+using System.ComponentModel.DataAnnotations;
+
+namespace BusBookingSystem.API.DTOs
 {
     public class RegisterDto
     {
-        public string name { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters.")]
+        public string Password { get; set; }
     }
 }
