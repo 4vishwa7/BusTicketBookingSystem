@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .login-page {
   font-family: 'Poppins', sans-serif;
@@ -20,7 +22,7 @@
   border-radius: 20px;
   border: 1px solid #ffd6d6;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(220, 50, 50, 0.10);
+  box-shadow: 0 8px 40px rgba(220, 50, 50, 0.1);
 }
 
 /* ---- Left Panel ---- */
@@ -47,7 +49,10 @@
   margin-bottom: 1.5rem;
 }
 
-.bus-icon svg { width: 44px; height: 44px; }
+.bus-icon svg {
+  width: 44px;
+  height: 44px;
+}
 
 .login-left h2 {
   font-size: 22px;
@@ -123,17 +128,22 @@
   font-size: 14px;
   color: #1a1a1a;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   box-sizing: border-box;
 }
 
 .input-wrap input:focus {
   border-color: #e53935;
-  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.10);
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
   background: #ffffff;
 }
 
-.input-wrap input::placeholder { color: #ccc; font-size: 13px; }
+.input-wrap input::placeholder {
+  color: #ccc;
+  font-size: 13px;
+}
 
 .input-icon {
   position: absolute;
@@ -167,7 +177,9 @@
   text-decoration: none;
 }
 
-.forgot:hover { text-decoration: underline; }
+.forgot:hover {
+  text-decoration: underline;
+}
 
 /* ---- Buttons ---- */
 .btn-login {
@@ -181,7 +193,10 @@
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
   box-shadow: 0 4px 14px rgba(229, 57, 53, 0.28);
   margin-bottom: 1rem;
 }
@@ -208,7 +223,9 @@
   font-weight: 600;
   color: #e53935;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    transform 0.15s;
 }
 
 .btn-outline:hover {
@@ -224,7 +241,11 @@
   margin-bottom: 1rem;
 }
 
-.divider span { flex: 1; height: 1px; background: #ffd6d6; }
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #ffd6d6;
+}
 
 .divider p {
   font-size: 12px;
@@ -235,6 +256,10 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 600px) {
-  .login-left { display: none; }
-  .login-right { padding: 2rem 1.5rem; }
+  .login-left {
+    display: none;
+  }
+  .login-right {
+    padding: 2rem 1.5rem;
+  }
 }

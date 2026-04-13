@@ -1,0 +1,48 @@
+<div class="home-container">
+  <!-- 🔍 Search Section -->
+  <div class="search-box">
+    <h2>Book Your Bus</h2>
+
+  <select [(ngModel)]="fromCityId">
+  <option [ngValue]="null">Select From</option>
+  <option *ngFor="let city of cities" [ngValue]="city.id">
+    {{ city.name }}
+  </option>
+</select>
+
+<select [(ngModel)]="toCityId">
+  <option [ngValue]="null">Select To</option>
+  <option *ngFor="let city of cities" [ngValue]="city.id">
+    {{ city.name }}
+  </option>
+</select>
+
+      <!-- DATE -->
+      <input type="date" [(ngModel)]="travelDate" />
+
+      <!-- BUTTON -->
+      <button (click)="searchBuses()">Search Buses</button>
+    </div>
+  </div>
+
+  <!-- 🔥 Extra Section -->
+  <div class="info-section">
+    <h3>Why Choose SAVR?</h3>
+
+    <div class="features">
+      <div class="card">
+        <h4>Fast Booking</h4>
+        <p>Book your tickets in seconds with easy steps.</p>
+      </div>
+
+      <div class="card">
+        <h4>Best Prices</h4>
+        <p>Get the best deals and discounts on every booking.</p>
+      </div>
+
+      <div class="card">
+        <h4>Secure Payment</h4>
+        <p>Multiple payment options with secure checkout.</p>
+      </div>
+    </div>
+  </div>
