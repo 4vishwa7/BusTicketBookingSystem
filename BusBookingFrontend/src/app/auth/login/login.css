@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.login-page {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff5f5;
+  padding: 2rem;
+}
+
+.login-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #ffd6d6;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(220, 50, 50, 0.10);
+}
+
+/* ---- Left Panel ---- */
+.login-left {
+  flex: 1;
+  background: #ffe4e4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-right: 1px solid #ffc8c8;
+}
+
+.bus-icon {
+  width: 80px;
+  height: 80px;
+  background: #e53935;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.bus-icon svg { width: 44px; height: 44px; }
+
+.login-left h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #b71c1c;
+  margin-bottom: 0.5rem;
+}
+
+.login-left p {
+  font-size: 13px;
+  color: #c62828;
+  line-height: 1.65;
+  max-width: 220px;
+}
+
+/* ---- Right Panel ---- */
+.login-right {
+  flex: 1.2;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e53935;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.login-right h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.5px;
+}
+
+.login-right .sub {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+/* ---- Labels ---- */
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #b71c1c;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+  margin-top: 1rem;
+}
+
+/* ---- Inputs ---- */
+.input-wrap {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 11px 14px 11px 42px;
+  border: 1.5px solid #ffc8c8;
+  border-radius: 10px;
+  background: #fff9f9;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.input-wrap input:focus {
+  border-color: #e53935;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.10);
+  background: #ffffff;
+}
+
+.input-wrap input::placeholder { color: #ccc; font-size: 13px; }
+
+.input-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  color: #e08080;
+  pointer-events: none;
+}
+
+/* ---- Error ---- */
+.error {
+  display: block;
+  font-size: 11px;
+  color: #e53935;
+  margin-bottom: 4px;
+  margin-top: 3px;
+  min-height: 16px;
+}
+
+/* ---- Forgot ---- */
+.forgot {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: #e53935;
+  margin: 8px 0 1.4rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.forgot:hover { text-decoration: underline; }
+
+/* ---- Buttons ---- */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(229, 57, 53, 0.28);
+  margin-bottom: 1rem;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: #c62828;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 57, 53, 0.35);
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  width: 100%;
+  padding: 11px;
+  background: transparent;
+  border: 1.5px solid #e53935;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e53935;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-outline:hover {
+  background: #fff0f0;
+  transform: translateY(-1px);
+}
+
+/* ---- Divider ---- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.divider span { flex: 1; height: 1px; background: #ffd6d6; }
+
+.divider p {
+  font-size: 12px;
+  color: #bbb;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .login-left { display: none; }
+  .login-right { padding: 2rem 1.5rem; }
+}
