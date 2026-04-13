@@ -1,0 +1,70 @@
+<div class="page">
+  <div class="topbar">
+    <div class="route-display">
+      <span class="city-name">{{ from() }}</span>
+      <div class="arrow-icon">→</div>
+      <span class="city-name">{{ to() }}</span>
+    </div>
+    <div class="trip-meta">
+      <strong>{{ date() }}</strong><br>
+      1 Passenger | General
+    </div>
+  </div>
+
+  <div class="results-wrap">
+    @if (isLoading()) {
+      <div class="loader">Loading buses...</div>
+    } @else {
+      <div class="results-header">
+        <span class="results-count">{{ buses().length }} buses found</span>
+      </div>
+
+      @for (bus of buses(); track bus.id) {
+        <div class="bus-card">
+          <div class="card-top">
+            <div class="bus-info">
+              <div class="bus-name">{{ bus.name }}</div>
+              <div class="bus-type">{{ bus.type }}</div>
+              <div class="rating-badge">★ {{ bus.rating }}</div>
+            </div>
+
+            <div class="timing-section">
+              <div class="timing-label">Select Timing</div>
+              <select class="timing-select" [(ngModel)]="bus.selectedTimingIndex">
+                @for (t of bus.timings; track $index) {
+                  <option [value]="$index">{{ t.dep }} → {{ t.arr }}</option>
+                }
+              </select>
+              <div class="journey-time">
+                <span>{{ bus.timings[bus.selectedTimingIndex].dep }}</span>
+                <div class="jt-line"></div>
+                <span class="jt-dur">{{ bus.timings[bus.selectedTimingIndex].dur }}</span>
+                <div class="jt-line"></div>
+                <span>{{ bus.timings[bus.selectedTimingIndex].arr }}</span>
+              </div>
+            </div>
+
+            <div class="price-section">
+              <div class="price-label">Fare</div>
+              <div class="price-amount">₹{{ bus.timings[bus.selectedTimingIndex].fare }}</div>
+              <div class="seats-left" [class.low]="bus.seats <= 5">
+                {{ bus.seats }} seats available
+              </div>
+            </div>
+          </div>
+
+          <div class="card-bottom">
+            <div class="tag-row">
+              @for (tag of bus.tags; track tag) {
+                <span class="tag" [ngClass]="getTagClass(tag)">{{ tag }}</span>
+              }
+            </div>
+            <button class="view-btn" (click)="viewBus(bus)">View Bus →</button>
+          </div>
+        </div>
+      } @empty {
+        <div class="no-more">No buses found for this route.</div>
+      }
+    }
+  </div>
+</div>
