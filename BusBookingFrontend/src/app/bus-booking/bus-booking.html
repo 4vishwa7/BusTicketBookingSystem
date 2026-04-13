@@ -1,0 +1,69 @@
+<div class="booking-wrapper">
+  <div class="stepper">
+    <div [class.active]="currentStep() >= 1">1. Select seats</div>
+    <div [class.active]="currentStep() >= 2">2. Board/Drop point</div>
+    <div [class.active]="currentStep() >= 3">3. Passenger Info</div>
+  </div>
+
+  @if (currentStep() === 1) {
+    <div class="selection-grid">
+      <div class="deck-container">
+        <h4>Lower Deck</h4>
+        <div class="bus-layout">
+          @for (seat of bus()?.lowerDeck; track seat.id) {
+            <div class="seat" 
+                 [class.sold]="seat.isSold"
+                 [class.selected]="selectedSeats().includes(seat)"
+                 (click)="toggleSeat(seat)">
+              <span class="price">₹700</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    @if (selectedSeats().length > 0) {
+      <div class="footer-bar">
+        <span>{{ selectedSeats().length }} Seats | ₹{{ totalFare() }}</span>
+        <button (click)="nextStep()">SELECT BOARDING & DROP POINT</button>
+      </div>
+    }
+  }
+
+  @if (currentStep() === 3) {
+    <div class="info-layout">
+      <div class="form-side">
+        <div class="card">
+          <h3>Contact details</h3>
+          <div class="input-group">
+            <input type="email" [(ngModel)]="email" placeholder="Email ID">
+            <input type="text" [(ngModel)]="phone" placeholder="Phone Number">
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Passenger details</h3>
+          <input type="text" [(ngModel)]="pName" placeholder="Name">
+          <input type="number" [(ngModel)]="pAge" placeholder="Age">
+          <div class="gender-toggle">
+            <button [class.active]="pGender() === 'Male'" (click)="pGender.set('Male')">Male</button>
+            <button [class.active]="pGender() === 'Female'" (click)="pGender.set('Female')">Female</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-side">
+        <div class="summary-card">
+          <h4>{{ bus()?.name }}</h4>
+          <p>{{ selectedSeats().length }} Seat(s)</p>
+          <hr>
+          <div class="fare-row">
+            <span>Total Amount</span>
+            <span>₹{{ totalFare() }}</span>
+          </div>
+          <button class="pay-btn">PROCEED TO PAY</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
