@@ -4,6 +4,7 @@ namespace BusBookingSystem.API.API.Booking.DTO;
 
 public class BookingRequestDto
 {
+    public Guid UserId { get; set; }
     public string PassengerName { get; set; }
     public int PassengerCount { get; set; }
     public string Phone { get; set; }
