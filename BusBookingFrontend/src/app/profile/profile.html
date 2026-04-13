@@ -1,0 +1,29 @@
+@if (isLoading()) {
+  <div class="loader">Fetching your details...</div>
+} @else if (user(); as profile) {
+  <section class="details-section">
+    <h3>Personal Details</h3>
+    
+    <div class="detail-item">
+      <label>Name</label>
+      <p>{{ profile.name }}</p>
+    </div>
+
+    <div class="detail-item">
+      <label>Email</label>
+      <p>{{ profile.email }}</p>
+    </div>
+
+    <div class="detail-item">
+      <label>Phone</label>
+      <p>{{ profile.phone }}</p>
+    </div>
+
+    <div class="detail-item">
+      <label>Institution</label>
+      <p>{{ profile.college }}</p>
+    </div>
+  </section>
+} @else {
+  <div class="error">Could not load profile details.</div>
+}

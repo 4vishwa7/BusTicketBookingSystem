@@ -1,0 +1,132 @@
+/* Container using Flexbox to center the card */
+.profile-container {
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 80px); /* Adjust based on your navbar height */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main Profile Card */
+.profile-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+/* Header Section */
+.profile-header {
+  background: linear-gradient(135deg, #d82e2e 0%, #a02020 100%);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.profile-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Personal Details Section */
+.details-section {
+  padding: 24px;
+}
+
+.details-section h3 {
+  color: #d82e2e;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.detail-item {
+  margin-bottom: 18px;
+}
+
+.detail-item label {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.detail-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #2d2d2d;
+  font-weight: 600;
+}
+
+/* Action Buttons (Bookings) */
+.actions-section {
+  padding: 0 24px 20px;
+}
+
+.action-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #fffafa;
+  border-color: #d82e2e;
+  transform: translateX(4px);
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Logout Button */
+.logout-container {
+  padding: 10px 24px 30px;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  color: #d82e2e;
+  border: 2px solid #d82e2e;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #d82e2e;
+  color: white;
+  box-shadow: 0 4px 12px rgba(216, 46, 46, 0.2);
+}
+
+/* Loading Spinner Placeholder */
+.loader {
+  text-align: center;
+  padding: 50px;
+  color: #d82e2e;
+  font-weight: bold;
+}
