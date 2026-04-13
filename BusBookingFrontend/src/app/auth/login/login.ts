@@ -8,10 +8,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.html',
-  styleUrls: ['./login.css']
+  styleUrls: ['./login.css'],
 })
 export class LoginComponent {
-  email    = '';
+  email = '';
   password = '';
   isLoading = false;
 
@@ -22,7 +22,9 @@ export class LoginComponent {
     this.isLoading = true;
     // TODO: call AuthService.login({ email, password })
     console.log('Login:', { email: this.email, password: this.password });
-    setTimeout(() => { this.isLoading = false; }, 1500);
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1500);
   }
 
   goToRegister() {

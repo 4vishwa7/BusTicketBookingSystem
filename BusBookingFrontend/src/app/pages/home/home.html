@@ -1,48 +1,78 @@
-<div class="home-container">
-  <!-- 🔍 Search Section -->
-  <div class="search-box">
-    <h2>Book Your Bus</h2>
+<app-navbar></app-navbar>
+<div class="home">
+  <!-- Hero + Search -->
+  <div class="hero">
+    <div class="hero-badge">India's trusted bus booking</div>
+    <h1>Travel Smarter with SAVR</h1>
+    <p>Search from 5000+ routes across India</p>
 
-  <select [(ngModel)]="fromCityId">
-  <option [ngValue]="null">Select From</option>
-  <option *ngFor="let city of cities" [ngValue]="city.id">
-    {{ city.name }}
-  </option>
-</select>
+    <div class="search-card">
+      <div class="search-grid">
+        <div class="field">
+          <div class="search-label">From</div>
+          <select [(ngModel)]="fromCityId">
+            <option [ngValue]="null">Select city</option>
+            <option *ngFor="let city of cities" [ngValue]="city.id">{{ city.name }}</option>
+          </select>
+        </div>
 
-<select [(ngModel)]="toCityId">
-  <option [ngValue]="null">Select To</option>
-  <option *ngFor="let city of cities" [ngValue]="city.id">
-    {{ city.name }}
-  </option>
-</select>
+        <div class="field">
+          <div class="search-label">To</div>
+          <select [(ngModel)]="toCityId">
+            <option [ngValue]="null">Select city</option>
+            <option *ngFor="let city of cities" [ngValue]="city.id">{{ city.name }}</option>
+          </select>
+        </div>
 
-      <!-- DATE -->
-      <input type="date" [(ngModel)]="travelDate" />
+        <div class="field">
+          <div class="search-label">Date</div>
+          <input type="date" [(ngModel)]="travelDate" />
+        </div>
 
-      <!-- BUTTON -->
-      <button (click)="searchBuses()">Search Buses</button>
+        <button class="search-btn" (click)="searchBuses()">Search</button>
+      </div>
     </div>
   </div>
 
-  <!-- 🔥 Extra Section -->
-  <div class="info-section">
-    <h3>Why Choose SAVR?</h3>
+  <div class="content">
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">5000+</div>
+        <div class="stat-lbl">Routes available</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2M+</div>
+        <div class="stat-lbl">Happy travellers</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">99%</div>
+        <div class="stat-lbl">On-time reliability</div>
+      </div>
+    </div>
 
-    <div class="features">
-      <div class="card">
+    <!-- Features -->
+    <div class="section-header">
+      <h2>Why choose SAVR?</h2>
+      <p>Everything you need for a smooth journey</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-wrap icon-red">⚡</div>
         <h4>Fast Booking</h4>
         <p>Book your tickets in seconds with easy steps.</p>
       </div>
-
-      <div class="card">
+      <div class="feature-card">
+        <div class="icon-wrap icon-amber">🏷️</div>
         <h4>Best Prices</h4>
         <p>Get the best deals and discounts on every booking.</p>
       </div>
-
-      <div class="card">
+      <div class="feature-card">
+        <div class="icon-wrap icon-green">🔒</div>
         <h4>Secure Payment</h4>
         <p>Multiple payment options with secure checkout.</p>
       </div>
     </div>
   </div>
+</div>
