@@ -1,0 +1,204 @@
+<div class="reg-page">
+  <div class="reg-wrapper">
+
+    <!-- Left Panel -->
+    <div class="reg-left">
+      <div class="icon-circle">
+        <svg viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="14" r="7"
+                  stroke="white" stroke-width="2" fill="white" fill-opacity="0.2"/>
+          <path d="M8 36c0-7.732 6.268-14 14-14s14 6.268 14 14"
+                stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2>Join SVAR</h2>
+      <p>Create your account and start booking comfortable bus rides today.</p>
+      <div class="perks">
+        <div class="perk"><div class="perk-dot"></div><span>Easy ticket booking in seconds</span></div>
+        <div class="perk"><div class="perk-dot"></div><span>Track your trips anytime</span></div>
+        <div class="perk"><div class="perk-dot"></div><span>Exclusive member discounts</span></div>
+        <div class="perk"><div class="perk-dot"></div><span>24/7 customer support</span></div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="reg-right">
+      <div class="brand">SVAR</div>
+      <h1>Create account</h1>
+      <p class="sub">Fill in the details below to get started</p>
+
+      <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+
+        <!-- Name Row -->
+        <div class="row-2">
+          <div class="field">
+            <label class="field-label" for="firstName">First name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="John"
+              [(ngModel)]="firstName"
+              #firstNameRef="ngModel"
+              required />
+            <small class="error"
+              *ngIf="firstNameRef.invalid && firstNameRef.touched">
+              First name is required
+            </small>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="lastName">Last name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Doe"
+              [(ngModel)]="lastName"
+              #lastNameRef="ngModel"
+              required />
+            <small class="error"
+              *ngIf="lastNameRef.invalid && lastNameRef.touched">
+              Last name is required
+            </small>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <label class="field-label" for="email">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            [(ngModel)]="email"
+            #emailRef="ngModel"
+            required
+            email />
+          <small class="error"
+            *ngIf="emailRef.invalid && emailRef.touched">
+            {{ emailRef.hasError('required') ? 'Email is required' : 'Enter a valid email' }}
+          </small>
+        </div>
+
+        <!-- Phone & DOB Row -->
+        <div class="row-2">
+          <div class="field">
+            <label class="field-label" for="phone">Phone number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="9876543210"
+              [(ngModel)]="phone"
+              #phoneRef="ngModel"
+              required
+              pattern="^[6-9]\d{9}$" />
+            <small class="error"
+              *ngIf="phoneRef.invalid && phoneRef.touched">
+              Enter a valid 10-digit mobile number
+            </small>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="dob">Date of birth</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              [(ngModel)]="dob"
+              #dobRef="ngModel"
+              required />
+            <small class="error"
+              *ngIf="dobRef.invalid && dobRef.touched">
+              Date of birth is required
+            </small>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="field">
+          <label class="field-label">Gender</label>
+          <div class="gender-row">
+            <label class="gender-opt" [class.selected]="gender === 'male'">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="male" /> Male
+            </label>
+            <label class="gender-opt" [class.selected]="gender === 'female'">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="female" /> Female
+            </label>
+            <label class="gender-opt" [class.selected]="gender === 'other'">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="other" /> Other
+            </label>
+          </div>
+        </div>
+
+        <!-- Password Row -->
+        <div class="row-2">
+          <div class="field">
+            <label class="field-label" for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Min 8 characters"
+              [(ngModel)]="password"
+              #passwordRef="ngModel"
+              required
+              minlength="8" />
+            <small class="error"
+              *ngIf="passwordRef.invalid && passwordRef.touched">
+              Minimum 8 characters required
+            </small>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="confirmPassword">Confirm password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Repeat password"
+              [(ngModel)]="confirmPassword"
+              #confirmPasswordRef="ngModel"
+              required />
+            <small class="error"
+              *ngIf="confirmPasswordRef.touched && !passwordsMatch()">
+              Passwords do not match
+            </small>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="checkbox-row">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            [(ngModel)]="terms"
+            #termsRef="ngModel"
+            required />
+          <label for="terms">
+            I agree to the <a routerLink="/terms">Terms of Service</a> and
+            <a routerLink="/privacy">Privacy Policy</a> of BusGo
+          </label>
+        </div>
+        <small class="error"
+          *ngIf="termsRef.invalid && termsRef.touched">
+          You must accept the terms to continue
+        </small>
+
+        <button type="submit" class="btn-register" [disabled]="isLoading">
+          {{ isLoading ? 'Creating account…' : 'Register' }}
+        </button>
+
+      </form>
+
+      <p class="login-link">
+        Already have an account?
+        <a (click)="goToLogin()">Sign in</a>
+      </p>
+    </div>
+
+  </div>
+</div>
