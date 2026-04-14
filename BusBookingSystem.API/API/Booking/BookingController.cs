@@ -1,5 +1,7 @@
 using BusBookingSystem.API.API.Booking.DTO;
+using BusBookingSystem.API.Application.Aggregator;
 using BusBookingSystem.API.Application.Booking;
+using BusBookingSystem.API.Shared.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusBookingSystem.API.API.Booking;
@@ -15,13 +17,25 @@ public class BookingController: ControllerBase
     {
         _service = service;
     }
+    private readonly IAggregatorService _aggregator;
+
+    public BookingController(IAggregatorService aggregator)
+    {
+        _aggregator = aggregator;
+    }
 
     [HttpPost("book")]
     public async Task<IActionResult> Book(BookingRequestDto request)
     {
-        var result = await _service.CreateBookingAsync(request);
-        return Ok(result);
+        var result = await _aggregator.BookTicketAsync(request);
+
+        return Ok(new ApiResponse<BookingResponseDTO>(
+            true,
+            "Booking successful",
+            result
+        ));
     }
+    
     [HttpPost("cancel/{id}")]
     public async Task<IActionResult> Cancel(int id)
     {

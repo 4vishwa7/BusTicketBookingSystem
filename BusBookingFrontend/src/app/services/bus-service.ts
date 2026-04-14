@@ -15,4 +15,8 @@ export class BusService {
       `${this.base}/api/buses/search?from=${params.from}&to=${params.to}&date=${params.date}&sort=${params.sort || ''}&filter=${params.filter || ''}`,
     );
   }
+
+  getBusDetails(busId: string): Observable<Bus> {
+    return this.http.get<Bus>(`${this.base}/api/buses/${busId}`);
+  }
 }
