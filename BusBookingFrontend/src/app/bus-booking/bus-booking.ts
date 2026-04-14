@@ -2,23 +2,25 @@ import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookingService } from '../services/booking.service';
-import { Bus, Seat, BoardingPoint } from '../models/bus.model';
+import { BusService } from '../services/bus-service';
+import { Bus } from '../models/bus.model';
+import { Seat } from '../models/seat.model';
+import { BusStop as BoardingPoint } from '../models/stop.model';
 
 @Component({
   selector: 'app-bus-booking',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './bus-booking.html',
-  styleUrls: ['./bus-booking.css']
+  styleUrls: ['./bus-booking.css'],
 })
 export class BusBookingComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  private bookingService = inject(BookingService);
+  private busService = inject(BusService);
 
   // Stepper State
   currentStep = signal(1); // 1: Seats, 2: Points, 3: Info
-  
+
   // Data Signals
   bus = signal<Bus | null>(null);
   selectedSeats = signal<Seat[]>([]);
@@ -38,19 +40,19 @@ export class BusBookingComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.bookingService.getBusDetails(+id).subscribe(data => this.bus.set(data));
+      this.busService.getBusDetails(id).subscribe((data) => this.bus.set(data));
     }
   }
 
   toggleSeat(seat: Seat) {
     if (seat.isSold) return;
-    this.selectedSeats.update(prev => 
-      prev.find(s => s.id === seat.id) ? prev.filter(s => s.id !== seat.id) : [...prev, seat]
+    this.selectedSeats.update((prev) =>
+      prev.find((s) => s.id === seat.id) ? prev.filter((s) => s.id !== seat.id) : [...prev, seat],
     );
   }
 
   nextStep() {
-    this.currentStep.update(s => s + 1);
+    this.currentStep.update((s) => s + 1);
     window.scrollTo(0, 0);
   }
 }

@@ -5,6 +5,8 @@ export interface BusStop {
   order: number;
 }
 
+export type BoardingPoint = BusStop;
+
 export interface BusStops {
   busId: string;
   stops: BusStop[];

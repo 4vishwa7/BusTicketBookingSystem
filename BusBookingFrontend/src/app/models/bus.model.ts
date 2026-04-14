@@ -18,6 +18,8 @@ export interface Bus {
   operator?: BusOperator;
   seats: number;
   seatDetails?: Seat[];
+  lowerDeck?: Seat[];
+  upperDeck?: Seat[];
   tags: string[];
   timings: BusTiming[];
   selectedTimingIndex: number;

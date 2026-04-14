@@ -5,6 +5,7 @@ export interface Seat {
   busId: string;
   seatNumber: string;
   seatType: SeatType;
+  isSold?: boolean;
   bus?: Bus;
 }
 

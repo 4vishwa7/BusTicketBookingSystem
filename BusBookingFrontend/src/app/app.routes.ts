@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login';
 import { RegisterComponent } from './auth/register/register';
 import { HomeComponent } from './pages/home/home';
-import { BusSearchComponent } from './pages/bus-list/bus-list';
+import { BusList } from './pages/bus-list/bus-list';
 import { AuthGuard } from './guard/auth-guard-guard';
+import { ProfileComponent } from './profile/profile';
 
 // TODO: create these components
 // ng generate component pages/search-results
@@ -17,7 +18,8 @@ export const routes: Routes = [
 
   // --- Protected Routes ---
   { path: 'home', component: HomeComponent },
-  { path: 'bus-list', component: BusSearchComponent, canActivate: [AuthGuard] },
+  { path: 'bus-list', component: BusList, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
   // { path: 'results',            component: SearchResultsComponent,   canActivate: [AuthGuard] },
   // { path: 'bus/:busId',         component: BusDetailComponent,       canActivate: [AuthGuard] },

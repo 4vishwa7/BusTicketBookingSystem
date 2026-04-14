@@ -4,15 +4,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BusService } from '../../services/bus-service';
 import { Bus } from '../../models/bus.model';
+import { NavbarComponent } from '../navbar/navbar';
 
 @Component({
-  selector: 'app-bus-search',
+  selector: 'app-bus-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NavbarComponent],
   templateUrl: './bus-list.html',
   styleUrls: ['./bus-list.css'],
 })
-export class BusSearchComponent implements OnInit {
+export class BusList implements OnInit {
   private busService = inject(BusService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
