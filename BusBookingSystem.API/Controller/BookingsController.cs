@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using BusBookingSystem.API.Interfaces;
 using BusBookingSystem.API.DTOs;
 
@@ -6,6 +7,7 @@ namespace BusBookingSystem.API.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookingsController : ControllerBase
     {
         private readonly IBookingService _bookingService;
@@ -20,7 +22,7 @@ namespace BusBookingSystem.API.Controller
         {
             try
             {
-                var result = await _bookingService.CreateBooking(request.UserId, request.TripId, request.SeatIds);
+                var result = await _bookingService.CreateBooking(request.UserId, request.TripId, request.SeatIds, request.IdempotencyKey);
                 return CreatedAtAction(nameof(GetBooking), new { id = result.Id }, result);
             }
             catch (Exception ex)

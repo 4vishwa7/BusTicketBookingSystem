@@ -14,6 +14,7 @@ namespace BusBookingSystem.API.Models
         public string PaymentMethod { get; set; }
         [Required]
         public string TransactionId { get; set; }
+        public string? IdempotencyKey { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public Booking Booking { get; set; }
     }

@@ -13,5 +13,7 @@ namespace BusBookingSystem.API.DTOs
         [Required]
         [MinLength(1, ErrorMessage = "At least one seat must be selected.")]
         public List<Guid> SeatIds { get; set; }
+
+        public string? IdempotencyKey { get; set; }
     }
 }

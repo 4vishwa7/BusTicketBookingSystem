@@ -34,6 +34,18 @@ namespace BusBookingSystem.API.Data
                 .WithMany()
                 .HasForeignKey(bs => bs.SeatId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // FIX: BookingSeat → Trip
+            modelBuilder.Entity<BookingSeat>()
+                .HasOne(bs => bs.Trip)
+                .WithMany()
+                .HasForeignKey(bs => bs.TripId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // CRITICAL: Prevent double booking at DB level
+            modelBuilder.Entity<BookingSeat>()
+                .HasIndex(bs => new { bs.SeatId, bs.TripId })
+                .IsUnique();
         }
     }
 }

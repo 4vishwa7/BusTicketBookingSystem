@@ -12,6 +12,7 @@ namespace BusBookingSystem.API.Models
         public decimal TotalAmount { get; set; }
         [Required]
         public string Status { get; set; } = "Pending"; // Pending, Confirmed, Cancelled
+        public string? IdempotencyKey { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? ConfirmedAt { get; set; }
         public User User { get; set; }

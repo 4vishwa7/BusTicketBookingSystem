@@ -5,8 +5,10 @@ namespace BusBookingSystem.API.Interfaces
 {
     public interface IUserService
     {
-        Task<User> Register(RegisterDto registerDto);
-        Task<User?> Login(LoginDto loginDto);
+        Task<AuthResponseDto> Register(RegisterDto registerDto);
+        Task<AuthResponseDto?> Login(LoginDto loginDto);
+        Task<bool> VerifyOtp(VerifyOtpDto verifyOtpDto);
+        Task<bool> ResendOtp(string email);
         Task<User?> GetById(Guid userId);
     }
 }
