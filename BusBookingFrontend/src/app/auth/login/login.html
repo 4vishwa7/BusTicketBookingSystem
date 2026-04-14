@@ -1,0 +1,101 @@
+<div class="login-page">
+  <div class="login-wrapper">
+    <!-- Left Panel -->
+    <div class="login-left">
+      <div class="bus-icon">
+        <svg viewBox="0 0 44 44" fill="none">
+          <rect
+            x="4"
+            y="10"
+            width="36"
+            height="22"
+            rx="4"
+            fill="white"
+            fill-opacity="0.25"
+            stroke="white"
+            stroke-width="2"
+          />
+          <rect x="8" y="15" width="8" height="8" rx="2" fill="white" fill-opacity="0.6" />
+          <rect x="18" y="15" width="8" height="8" rx="2" fill="white" fill-opacity="0.6" />
+          <rect x="28" y="15" width="8" height="8" rx="2" fill="white" fill-opacity="0.6" />
+          <circle cx="12" cy="35" r="4" fill="white" />
+          <circle cx="32" cy="35" r="4" fill="white" />
+        </svg>
+      </div>
+      <h2>Welcome aboard!</h2>
+      <p>Book your bus tickets quickly and travel comfortably across the country.</p>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="login-right">
+      <div class="brand">SVAR</div>
+      <h1>Sign in</h1>
+      <p class="sub">Enter your credentials to continue</p>
+
+      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <!-- Email -->
+        <label class="field-label" for="email">Email address</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+          </svg>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            [(ngModel)]="email"
+            #emailRef="ngModel"
+            required
+            email
+          />
+        </div>
+        <small class="error" *ngIf="emailRef.invalid && emailRef.touched">
+          {{ emailRef.hasError('required') ? 'Email is required' : 'Enter a valid email' }}
+        </small>
+
+        <!-- Password -->
+        <label class="field-label" for="password">Password</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            [(ngModel)]="password"
+            #passwordRef="ngModel"
+            required
+            minlength="6"
+          />
+        </div>
+        <small class="error" *ngIf="passwordRef.invalid && passwordRef.touched">
+          Password must be at least 6 characters
+        </small>
+
+        <a class="forgot" routerLink="/forgot-password">Forgot password?</a>
+
+        <button type="submit" class="btn-login" [disabled]="isLoading">
+          {{ isLoading ? 'Signing in…' : 'Login' }}
+        </button>
+      </form>
+
+      <div class="divider">
+        <span></span>
+        <p>don't have an account?</p>
+        <span></span>
+      </div>
+
+      <button class="btn-outline" type="button" (click)="goToRegister()">
+        Create an account →
+      </button>
+    </div>
+  </div>
+</div>

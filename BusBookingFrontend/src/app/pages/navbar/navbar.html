@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="logo" (click)="goHome()">SAVR</div>
+
+  <ul class="nav-links">
+    <li (click)="goHome()">Home</li>
+    <li (click)="goBooking()">Booking</li>
+  </ul>
+
+  <div class="user-section" (click)="handleUserClick()">
+    <span class="user-icon">👤</span>
+    <span *ngIf="isLoggedIn">{{ userName }}</span>
+  </div>
+</nav>
